@@ -41,7 +41,7 @@ jobs:
           name: nyc-mocha-coverage
           path: nyc-mocha/
         continue-on-error: true
-      - run: node scripts/misdirection-count.mjs
+      - run: tsx scripts/misdirection-count.mts
         continue-on-error: true
       - uses: actions/upload-artifact@v4
         if: always()

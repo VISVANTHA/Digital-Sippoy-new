@@ -75,7 +75,7 @@ jobs:
           path: jscpd-report/
           retention-days: 14
       # Regression Focus Mapping: maps clone pairs to unit test files
-      - run: node scripts/duplication-regression.mjs
+      - run: tsx scripts/duplication-regression.mts
         continue-on-error: true
       - uses: actions/upload-artifact@v4
         if: always()
@@ -107,9 +107,9 @@ jobs:
           path: nyc-mocha/
           retention-days: 14
       # Emit mocha-stats.json sidecar (Granularity, Correctness, Boundary Failure Rate)
-      - run: node scripts/mocha-stats.mjs
+      - run: tsx scripts/mocha-stats.mts
         continue-on-error: true
-      - run: node scripts/verify-audit-log.mjs
+      - run: tsx scripts/verify-audit-log.mts
         continue-on-error: true
       - uses: actions/upload-artifact@v4
         if: always()
@@ -178,13 +178,13 @@ jobs:
       - run: npm ci
       - run: npm audit --production --audit-level=high
         continue-on-error: true
-      - run: node scripts/generate-sbom.mjs
+      - run: tsx scripts/generate-sbom.mts
         continue-on-error: true
-      - run: node scripts/license-check.mjs
+      - run: tsx scripts/license-check.mts
         continue-on-error: true
-      - run: node scripts/dependency-health.mjs
+      - run: tsx scripts/dependency-health.mts
         continue-on-error: true
-      - run: node scripts/secret-scan.mjs
+      - run: tsx scripts/secret-scan.mts
         continue-on-error: true
       - run: npm run scan:osv-grype
         continue-on-error: true
@@ -192,7 +192,7 @@ jobs:
         continue-on-error: true
       - run: npm run advisories:poll
         continue-on-error: true
-      - run: node scripts/sast-sca-master-report.mjs
+      - run: tsx scripts/sast-sca-master-report.mts
         continue-on-error: true
       - uses: actions/upload-artifact@v4
         if: always()
