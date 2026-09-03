@@ -36,7 +36,7 @@ jobs:
       # score: MAX(0, 100 - Misdirection_Count × 20).
       # Combines with the raw branch ratio from coverage-summary.json.
       - name: Download coverage summary for misdirection calc
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: nyc-mocha-coverage
           path: nyc-mocha/
