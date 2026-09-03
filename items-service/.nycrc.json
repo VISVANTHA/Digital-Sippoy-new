@@ -1,0 +1,9 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "reporter": ["text", "json-summary", "html"],
+  "report-dir": "nyc-mocha",
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/db-clone.ts", "src/index.ts", "test/**/*.ts", "**/*.d.ts"],
+  "all": true,
+  "check-coverage": false
+}

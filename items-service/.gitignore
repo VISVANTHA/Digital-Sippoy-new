@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+lint-report.json
+jscpd-report/
+coverage/
+.nyc_output/
+nyc-mocha/

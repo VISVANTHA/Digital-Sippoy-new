@@ -1,0 +1,24 @@
+services:
+  items-service:
+    build: ./items-service
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: "4000"
+    volumes:
+      - items-data:/app/data
+
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      ITEMS_SERVICE_URL: "http://items-service:4000"
+      # Override both in any real deployment -- see README.md's Auth section.
+      NEXTAUTH_SECRET: "digital-sippoy-demo-secret-not-for-production"
+      NEXTAUTH_URL: "http://localhost:3000"
+    depends_on:
+      - items-service
+
+volumes:
+  items-data:

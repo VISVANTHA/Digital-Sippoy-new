@@ -1,0 +1,51 @@
+name: Mutation testing (nightly)
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mutation:
+    name: StrykerJS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run mutation
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mutation-report
+          path: |
+            mutation-report.json
+            reports/mutation/
+          retention-days: 30
+      # Component 2: Branch Misdirection Discovery
+      # Reads mutation-report.json, counts survived mutants in branch-direction
+      # operators (ConditionalExpression, EqualityOperator, LogicalOperator,
+      # SwitchCaseRemoval), computes Misdirection_Count and the normalized
+      # score: MAX(0, 100 - Misdirection_Count × 20).
+      # Combines with the raw branch ratio from coverage-summary.json.
+      - name: Download coverage summary for misdirection calc
+        uses: actions/download-artifact@v4
+        with:
+          name: nyc-mocha-coverage
+          path: nyc-mocha/
+        continue-on-error: true
+      - run: node scripts/misdirection-count.mjs
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: misdirection-stats
+          path: misdirection-stats.json
+          retention-days: 30

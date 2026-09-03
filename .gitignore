@@ -1,0 +1,75 @@
+# Portable build tooling used only to build/validate this repo locally (not part of the fixture)
+.tools/
+
+# Dependencies
+node_modules/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Next.js build output
+.next/
+out/
+
+# Misc
+.DS_Store
+*.pem
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+bun-debug.log*
+
+# Env files
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Lint / quality tool reports (CI artifacts, never committed)
+lint-report.json
+jscpd-report/
+coverage/
+.nyc_output/
+nyc-mocha/
+mutation-report.json
+reports/mutation/
+.stryker-tmp/
+churn-report.json
+# New metric-gap report outputs (Components 1–6)
+mocha-stats.json
+misdirection-stats.json
+duplication-regression-map.json
+test-impact-map.json
+data/audit.log
+read_excels.cjs
+whitebox_parsed_master.json
+whitebox_clean_105_metrics.json
+*.xlsx
+dependency-health-report.json
+license-compliance-report.json
+secret-scan-report.json
+cyclonedx-sbom.json
+audit-trail-report.json
+lizard-sonar-report.json
+data-flow-all-defs-report.json
+side-effect-mapping-report.json
+sast-sca-master-report.json
+js_path_coverage.json
+fault-probability-report.json
+violation-density-report.json
+osv-grype-report.json
+ncu-report.json
+advisories-report.json
+vitest-coverage/
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/stryker-mutator/stryker-js/master/packages/api/schema/stryker-schema.json",
+  "packageManager": "npm",
+  "testRunner": "mocha",
+  "mochaOptions": {
+    "spec": ["test/**/*.test.ts"]
+  },
+  "mutate": [
+    "lib/db.ts",
+    "lib/validate.ts",
+    "lib/auth.ts",
+    "lib/require-session.ts",
+    "app/api/items/route.ts"
+  ],
+  "reporters": ["clear-text", "json", "html"],
+  "jsonReporter": {
+    "fileName": "mutation-report.json"
+  },
+  "htmlReporter": {
+    "fileName": "reports/mutation/index.html"
+  },
+  "coverageAnalysis": "perTest",
+  "concurrency": 2,
+  "tempDirName": ".stryker-tmp",
+  "thresholds": {
+    "high": 80,
+    "low": 60,
+    "break": null
+  }
+}
