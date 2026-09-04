@@ -21,7 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run mutation
         continue-on-error: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: mutation-report
@@ -43,7 +43,7 @@ jobs:
         continue-on-error: true
       - run: tsx scripts/misdirection-count.mts
         continue-on-error: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: misdirection-stats
