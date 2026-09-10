@@ -54,7 +54,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "eslint": "^9",
-    "eslint-config-next": "15.5.24",
+    "eslint-config-next": "16.3.4",
     "eslint-plugin-security": "^4.0.1",
     "eslint-plugin-sonarjs": "^4.2.0",
     "jscpd": "^4.0.5",
